@@ -1,0 +1,16 @@
+image:
+  file: .gitpod.dockerfile
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: true
+    addBadge: true
+    addLabel: true
+vscode:
+  extensions:
+    - Dart-Code.dart-code@3.10.1:WYFoA7kIknxoDt/Wu6mqZA==
+    - Dart-Code.flutter@3.10.1:GThGWBTW94fl6tmZ1DxSSw==
