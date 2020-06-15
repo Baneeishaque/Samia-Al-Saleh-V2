@@ -29,22 +29,66 @@ Text(
   style: TextStyle(
   fontSize: 16),
 ),
-SizedBox(height: 48,),
-            Text(
-  'Hello',
-  textAlign: TextAlign.center,
-  style: TextStyle(fontWeight: FontWeight.bold,
-  fontSize: 40),
-),Text(
-  'Beautiful!',
-  textAlign: TextAlign.center,
-  style: TextStyle(fontWeight: FontWeight.bold,
-  fontSize: 40),
-),
-SizedBox(height: 48,),
+SizedBox(height: 24,),
 
-Container(
-      margin: const EdgeInsets.only(left: 48, right: 48),
+ Container(
+      margin: const EdgeInsets.only(left: 24, right: 24),
+      child: ConstrainedBox(
+      
+    constraints: const BoxConstraints(minWidth: double.infinity),
+    child: 
+                          TextFormField(
+                          
+                              decoration:
+                                  InputDecoration(labelText: 'Your Email'),
+                              ),),),
+                          Container(
+      margin: const EdgeInsets.only(left: 24, right: 24),
+      child: ConstrainedBox(
+      
+    constraints: const BoxConstraints(minWidth: double.infinity),
+    child: 
+                          TextFormField(
+                          
+                              decoration:
+                                  InputDecoration(labelText: 'Password'),
+                              ),),),
+SizedBox(height: 12,),
+                          new Row(
+  mainAxisSize: MainAxisSize.min,
+  children: <Widget>[
+    new Padding(
+        padding: const EdgeInsets.only(left:24.0),
+        child:  Switch(
+          value: true,
+          onChanged: (value){
+           
+          },
+        ),
+      ),
+      Text(
+  'Remember',
+  style: TextStyle(
+  fontSize: 16),
+),
+Spacer(),
+      new Padding(
+        padding: const EdgeInsets.only(right:20.0),
+        child:  Text(
+  'Forgot Password?',
+  style: TextStyle(
+  fontSize: 16),
+),
+      ),
+   
+  ],
+),
+                          
+
+SizedBox(height: 12,),
+
+                         Container(
+      margin: const EdgeInsets.only(left: 24, right: 24),
       child: ConstrainedBox(
       
     constraints: const BoxConstraints(minWidth: double.infinity),
@@ -60,17 +104,14 @@ Container(
         style: TextStyle(fontSize: 14)),
         
     ),
-),
-    ),
-SizedBox(height: 36,),
+),),
+  SizedBox(height: 36,),
 Text(
   'by Samia Alsaleh',
   textAlign: TextAlign.center,
   style: TextStyle(fontStyle: FontStyle.italic,
   fontSize: 16),
-),
-SizedBox(height: 36,),
-Image.asset('assets/images/horizontal-line-50.png'),
+),                      
           ],
         ),
       ),
