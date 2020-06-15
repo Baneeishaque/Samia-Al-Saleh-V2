@@ -18,27 +18,30 @@ class _LauncherPageState extends State<LauncherPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('assets/images/logo.png'),
+            Image.asset('assets/images/sharp_api_black_48dp.png'),
+            SizedBox(
+              height: 4,
+            ),
             Text(
               'Samia Alsaleh',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(
-              height: 48,
+              height: 80,
             ),
             Text(
               'Hello',
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+              style: TextStyle(fontSize: 40),
             ),
             Text(
               'Beautiful!',
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+              style: TextStyle(fontSize: 40),
             ),
             SizedBox(
-              height: 48,
+              height: 80,
             ),
             Container(
               margin: const EdgeInsets.only(left: 48, right: 48),
@@ -47,9 +50,9 @@ class _LauncherPageState extends State<LauncherPage> {
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.red)),
+                      side: BorderSide(color: Colors.redAccent)),
                   onPressed: () {},
-                  color: Colors.red,
+                  color: Colors.redAccent,
                   textColor: Colors.white,
                   child: Text("Log In", style: TextStyle(fontSize: 14)),
                 ),
@@ -63,10 +66,6 @@ class _LauncherPageState extends State<LauncherPage> {
               textAlign: TextAlign.center,
               style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
             ),
-            SizedBox(
-              height: 36,
-            ),
-            Image.asset('assets/images/horizontal-line-50.png'),
           ],
         ),
       ),
