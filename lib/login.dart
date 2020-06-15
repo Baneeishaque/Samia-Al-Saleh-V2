@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -10,6 +15,25 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  TextEditingController emailController;
+  TextEditingController passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    emailController = new TextEditingController(text: 'pvramsad@gmail.com');
+    passwordController = new TextEditingController(text: 'Asdfghjkl!123');
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,6 +59,7 @@ class _LoginPageState extends State<LoginPage> {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: double.infinity),
                 child: TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(labelText: 'Your Email'),
                 ),
               ),
@@ -44,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: double.infinity),
                 child: TextFormField(
+                  controller: passwordController,
                   decoration: InputDecoration(labelText: 'Password'),
                 ),
               ),
@@ -86,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
                       side: BorderSide(color: Colors.red)),
-                  onPressed: () {},
+                  onPressed: () => {_makePostRequest()},
                   color: Colors.red,
                   textColor: Colors.white,
                   child: Text("Log In", style: TextStyle(fontSize: 14)),
@@ -104,6 +130,54 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
+    );
+  }
+
+  _makePostRequest() async {
+    try {
+      String url = 'http://135.181.28.29:8062/apiv1/login';
+      final SharedPreferences prefs = await _prefs;
+      Map<String, String> headers = {
+        "Content-type": "application/json",
+        "Cookie": prefs.getString('sessionIdHeader') ?? '',
+      };
+      print('Headers : ' + headers.toString());
+      String json = '{"json": 2, "params": { "email":"' +
+          emailController.text +
+          '", "password":"' +
+          passwordController.text +
+          '" }}';
+      print("JSON : " + json);
+      Response response = await post(url, headers: headers, body: json);
+      int statusCode = response.statusCode;
+      print('Status Code : ' + statusCode.toString());
+      String body = response.body;
+      print('Response Body : ' + body);
+
+      Map<String, dynamic> responseJson = jsonDecode(body);
+      print('Response Json : ' + responseJson.toString());
+
+      Map<String, dynamic> resultJson = jsonDecode(responseJson['result']);
+      print('Result Json : ' + responseJson['result'].toString());
+
+      bool responseStatus = responseJson['result'][0]['status'];
+      if (responseStatus) {
+        showShortToast('Welcome ' + responseJson['result'][0]['name']);
+        Navigator.pushNamed(context, '/categories');
+      } else {
+        showShortToast("Error : " + responseJson['result']['error']);
+      }
+    } on Exception catch (exception) {
+      print(exception);
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  void showShortToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
     );
   }
 }
