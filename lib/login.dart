@@ -18,17 +18,20 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('assets/images/logo.png'),
+            Image.asset('assets/images/sharp_api_black_48dp.png'),
+            SizedBox(
+              height: 4,
+            ),
             Text(
               'Samia Alsaleh',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(
-              height: 24,
+              height: 32,
             ),
             Container(
-              margin: const EdgeInsets.only(left: 24, right: 24),
+              margin: const EdgeInsets.only(left: 32, right: 32),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: double.infinity),
                 child: TextFormField(
@@ -37,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 24, right: 24),
+              margin: const EdgeInsets.only(left: 32, right: 32),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: double.infinity),
                 child: TextFormField(
@@ -52,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 new Padding(
-                  padding: const EdgeInsets.only(left: 24.0),
+                  padding: const EdgeInsets.only(left: 32.0),
                   child: Switch(
                     value: true,
                     onChanged: (value) {},
@@ -64,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Spacer(),
                 new Padding(
-                  padding: const EdgeInsets.only(right: 20.0),
+                  padding: const EdgeInsets.only(right: 32.0),
                   child: Text(
                     'Forgot Password?',
                     style: TextStyle(fontSize: 16),
@@ -73,10 +76,10 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             SizedBox(
-              height: 12,
+              height: 8,
             ),
             Container(
-              margin: const EdgeInsets.only(left: 24, right: 24),
+              margin: const EdgeInsets.only(left: 32, right: 32),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: double.infinity),
                 child: RaisedButton(
