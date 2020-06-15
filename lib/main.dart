@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:samia_al_saleh/product.dart';
+import 'package:samia_al_saleh/cart.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
 //      home: LoginPage(title: 'Samia Alsaleh Product Login'),
 //      home: CategoriesPage(title: 'Samia Alsaleh Product Categories'),
 //      home: ProductsPage(title: 'Samia Alsaleh Products'),
-      home: ProductPage(title: 'Samia Alsaleh Product'),
+//      home: ProductPage(title: 'Samia Alsaleh Product'),
+      home: CartPage(title: 'Samia Alsaleh Cart'),
       debugShowCheckedModeBanner: false,
     );
   }
