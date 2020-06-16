@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
+import 'package:samia_al_saleh/category_model.dart';
+import 'package:samia_al_saleh/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -157,16 +159,45 @@ class _LoginPageState extends State<LoginPage> {
       Map<String, dynamic> responseJson = jsonDecode(body);
       print('Response Json : ' + responseJson.toString());
 
-      Map<String, dynamic> resultJson = jsonDecode(responseJson['result']);
-      print('Result Json : ' + responseJson['result'].toString());
-
-      bool responseStatus = responseJson['result'][0]['status'];
+      bool responseStatus = responseJson['result']['status'];
       if (responseStatus) {
-        showShortToast('Welcome ' + responseJson['result'][0]['name']);
-        Navigator.pushNamed(context, '/categories');
+        SamiaApp.username = responseJson['result']['name'].toString();
+        showShortToast('Welcome ' + responseJson['result']['name']);
+        _makePostRequestForCategory();
       } else {
         showShortToast("Error : " + responseJson['result']['error']);
+        print("Error : " + responseJson['result']['error']);
       }
+    } on Exception catch (exception) {
+      print(exception);
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  _makePostRequestForCategory() async {
+    try {
+      String url = 'http://135.181.28.29:8062/apiv1/category';
+      final SharedPreferences prefs = await _prefs;
+      Map<String, String> headers = {
+        "Content-type": "application/json",
+        "Cookie": prefs.getString('sessionIdHeader') ?? '',
+      };
+      print('Headers : ' + headers.toString());
+      String json = '{}';
+      print("JSON : " + json);
+      Response response = await post(url, headers: headers, body: json);
+      int statusCode = response.statusCode;
+      print('Status Code : ' + statusCode.toString());
+      String body = response.body;
+      print('Response Body : ' + body);
+
+      var categoriesJson = jsonDecode(body)['result'] as List;
+      SamiaApp.categories =
+          categoriesJson.map((tagJson) => Category.fromJson(tagJson)).toList();
+      SamiaApp.categories
+          .forEach((element) => print('Category Item : ' + element.toString()));
+      Navigator.pushNamed(context, '/categories');
     } on Exception catch (exception) {
       print(exception);
     } catch (error) {

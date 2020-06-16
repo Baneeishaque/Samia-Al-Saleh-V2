@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:samia_al_saleh/cart.dart';
 import 'package:samia_al_saleh/categories.dart';
+import 'package:samia_al_saleh/category_model.dart';
 import 'package:samia_al_saleh/launcher.dart';
 import 'package:samia_al_saleh/login.dart';
 import 'package:samia_al_saleh/product.dart';
 import 'package:samia_al_saleh/products.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(SamiaApp());
 }
 
-class MyApp extends StatelessWidget {
+class SamiaApp extends StatelessWidget {
+  static List<Category> categories;
+  static String username;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,12 +23,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-//      home: LauncherPage(title: 'Samia Alsaleh Launcher'),
-//      home: LoginPage(title: 'Samia Alsaleh Product Login'),
-//      home: CategoriesPage(title: 'Samia Alsaleh Product Categories'),
-//      home: ProductsPage(title: 'Samia Alsaleh Products'),
-//      home: ProductPage(title: 'Samia Alsaleh Product'),
-//      home: CartPage(title: 'Samia Alsaleh Cart'),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {

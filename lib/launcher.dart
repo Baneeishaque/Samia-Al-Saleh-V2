@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
+import 'package:samia_al_saleh/json_rpc_helpers.dart';
+import 'package:samia_al_saleh/server_end_point.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LauncherPage extends StatefulWidget {
@@ -81,10 +83,10 @@ class _LauncherPageState extends State<LauncherPage> {
 
   _makePostRequest() async {
     try {
-      String url = 'http://135.181.28.29:8062/web/session/authenticate';
+      String url = serverAddress + '/web/session/authenticate';
       Map<String, String> headers = {"Content-type": "application/json"};
-      String json =
-          '{"json": 2, "params": { "db": "samia", "login": "admin", "password": "admin" }}';
+      String json = generateJsonRpcRequestRowData(
+          '{ "db": "samia", "login": "admin", "password": "admin" }');
       Response response = await post(url, headers: headers, body: json);
       int statusCode = response.statusCode;
       print('Status Code : ' + statusCode.toString());
