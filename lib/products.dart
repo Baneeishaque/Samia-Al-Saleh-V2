@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:samia_al_saleh/bottom_navigation_bar_helpers.dart';
+import 'package:samia_al_saleh/drawer_helpers.dart';
+import 'package:samia_al_saleh/main.dart';
 
 class ProductsPage extends StatefulWidget {
   ProductsPage({Key key, this.title}) : super(key: key);
@@ -35,376 +40,233 @@ class _ProductsPageState extends State<ProductsPage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              height: 24,
-            ),
-            new Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  new Image.asset(
-                    "assets/images/sharp_keyboard_backspace_black_48dp.png",
-                    height: 50,
-                    width: 50,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 24,
-            ),
-            new Padding(
-              padding: EdgeInsets.only(left: 16),
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Category Name',
-                    textAlign: TextAlign.start,
-                    style: TextStyle(fontSize: 24),
-                  ),
-                ],
-              ),
-            ),
-            new Expanded(
-                child: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(20),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              childAspectRatio: MediaQuery.of(context).size.height / 1000,
-              crossAxisCount: 2,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        color: Colors.white,
-                        child: new Image.asset(
-                          "assets/images/sharp_local_bar_black_48dp.png",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        'Product Name',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'Product Sub Category',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Text(
-                            'Product Price',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Spacer(),
-                          Icon(Icons.favorite_border)
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        color: Colors.white,
-                        child: new Image.asset(
-                          "assets/images/sharp_local_bar_black_48dp.png",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        'Product Name',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'Product Sub Category',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Text(
-                            'Product Price',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Spacer(),
-                          Icon(Icons.favorite_border)
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        color: Colors.white,
-                        child: new Image.asset(
-                          "assets/images/sharp_local_bar_black_48dp.png",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        'Product Name',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'Product Sub Category',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Text(
-                            'Product Price',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Spacer(),
-                          Icon(Icons.favorite_border)
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        color: Colors.white,
-                        child: new Image.asset(
-                          "assets/images/sharp_local_bar_black_48dp.png",
-                        ),
-                      ),
-                      SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        'Product Name',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'Product Sub Category',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Text(
-                            'Product Price',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          Spacer(),
-                          Icon(Icons.favorite_border)
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            )),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(8),
-        child: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text('Home'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              title: Text('Home'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart),
-              title: Text('Home'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              title: Text('Home'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              title: Text('Home'),
-            ),
-          ],
-          currentIndex: 0,
-          selectedItemColor: Colors.black87,
-          unselectedItemColor: Colors.black38,
-          onTap: (index) {},
-        ),
-      ),
-      drawer: Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: Colors
-              .brown[100], //This will change the drawer background to blue.
-          //other styles
-        ),
-        child: Drawer(
-          // Add a ListView to the drawer. This ensures the user can scroll
-          // through the options in the drawer if there isn't enough vertical
-          // space to fit everything.
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              DrawerHeader(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      new Image.asset('assets/images/sharp_api_black_48dp.png'),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text('User'),
-                    ]),
-                decoration: BoxDecoration(
-                  color: Colors.deepOrange[300],
+              SizedBox(
+                height: 24,
+              ),
+              new Padding(
+                padding: EdgeInsets.only(left: 16),
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    new Image.asset(
+                      "assets/images/sharp_keyboard_backspace_black_48dp.png",
+                      height: 50,
+                      width: 50,
+                    ),
+                  ],
                 ),
               ),
-              new ExpansionTile(
-                title: Text("Products"),
-                children: <Widget>[
-                  ListTile(
-                    title: Text('Products1'.toUpperCase()),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('Products2'.toUpperCase()),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('Products3'.toUpperCase()),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: Text('Products4'.toUpperCase()),
-                    onTap: () {},
-                  ),
-                ],
+              SizedBox(
+                height: 24,
               ),
-              Divider(),
-              ListTile(
-                title: Text('Cart'.toUpperCase()),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
+              new Padding(
+                padding: EdgeInsets.only(left: 16),
+                child: new Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      SamiaApp.categoryName,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(fontSize: 24),
+                    ),
+                  ],
+                ),
               ),
-              Divider(),
-              ListTile(
-                title: Text('WishList'.toUpperCase()),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
+              new Expanded(
+                child: GridView.count(
+                  primary: false,
+                  padding: const EdgeInsets.all(20),
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: MediaQuery.of(context).size.height / 1000,
+                  crossAxisCount: 2,
+                  children: <Widget>[
+                    Container(
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            new GestureDetector(
+                              onTap: () => {_navigateToProductPage(0)},
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      color: Colors.white,
+                                      child: new Image.memory(
+                                        base64Decode(
+                                            SamiaApp.products[0].image_512),
+                                        height: 100,
+                                        width: 100,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 16,
+                                    ),
+                                    Text(
+                                      SamiaApp.products[0].name,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+//                                    Text(
+//                                      'Product Sub Category',
+//                                      textAlign: TextAlign.center,
+//                                      style: TextStyle(fontSize: 16),
+//                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        Text(
+                                          SamiaApp.products[0].listPrice
+                                              .toString(),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        Spacer(),
+                                        Icon(Icons.favorite_border)
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                color: Colors.orange[200],
+                              ),
+                            ),
+
+//                Container(
+//                  padding: const EdgeInsets.all(8),
+//                  child: Column(
+//                    mainAxisAlignment: MainAxisAlignment.center,
+//                    children: <Widget>[
+//                      Container(
+//                        color: Colors.white,
+//                        child: new Image.asset(
+//                          "assets/images/sharp_local_bar_black_48dp.png",
+//                        ),
+//                      ),
+//                      SizedBox(
+//                        height: 16,
+//                      ),
+//                      Text(
+//                        SamiaApp.products[1].name,
+//                        textAlign: TextAlign.center,
+//                        style: TextStyle(fontSize: 16),
+//                      ),
+//                      Text(
+//                        'Product Sub Category',
+//                        textAlign: TextAlign.center,
+//                        style: TextStyle(fontSize: 16),
+//                      ),
+//                      Row(
+//                        mainAxisSize: MainAxisSize.min,
+//                        children: <Widget>[
+//                          Text(
+//                            SamiaApp.products[1].listPrice.toString(),
+//                            textAlign: TextAlign.center,
+//                            style: TextStyle(fontSize: 16),
+//                          ),
+//                          Spacer(),
+//                          Icon(Icons.favorite_border)
+//                        ],
+//                      ),
+//                    ],
+//                  ),
+//                ),
+//                Container(
+//                  padding: const EdgeInsets.all(8),
+//                  child: Column(
+//                    mainAxisAlignment: MainAxisAlignment.center,
+//                    children: <Widget>[
+//                      Container(
+//                        color: Colors.white,
+//                        child: new Image.asset(
+//                          "assets/images/sharp_local_bar_black_48dp.png",
+//                        ),
+//                      ),
+//                      SizedBox(
+//                        height: 16,
+//                      ),
+//                      Text(
+//                        SamiaApp.products[2].name,
+//                        textAlign: TextAlign.center,
+//                        style: TextStyle(fontSize: 16),
+//                      ),
+//                      Text(
+//                        'Product Sub Category',
+//                        textAlign: TextAlign.center,
+//                        style: TextStyle(fontSize: 16),
+//                      ),
+//                      Row(
+//                        mainAxisSize: MainAxisSize.min,
+//                        children: <Widget>[
+//                          Text(
+//                            SamiaApp.products[2].listPrice.toString(),
+//                            textAlign: TextAlign.center,
+//                            style: TextStyle(fontSize: 16),
+//                          ),
+//                          Spacer(),
+//                          Icon(Icons.favorite_border)
+//                        ],
+//                      ),
+//                    ],
+//                  ),
+//                ),
+//                Container(
+//                  padding: const EdgeInsets.all(8),
+//                  child: Column(
+//                    mainAxisAlignment: MainAxisAlignment.center,
+//                    children: <Widget>[
+//                      Container(
+//                        color: Colors.white,
+//                        child: new Image.asset(
+//                          "assets/images/sharp_local_bar_black_48dp.png",
+//                        ),
+//                      ),
+//                      SizedBox(
+//                        height: 16,
+//                      ),
+//                      Text(
+//                        SamiaApp.products[3].name,
+//                        textAlign: TextAlign.center,
+//                        style: TextStyle(fontSize: 16),
+//                      ),
+//                      Text(
+//                        'Product Sub Category',
+//                        textAlign: TextAlign.center,
+//                        style: TextStyle(fontSize: 16),
+//                      ),
+//                      Row(
+//                        mainAxisSize: MainAxisSize.min,
+//                        children: <Widget>[
+//                          Text(
+//                            SamiaApp.products[3].listPrice.toString(),
+//                            textAlign: TextAlign.center,
+//                            style: TextStyle(fontSize: 16),
+//                          ),
+//                          Spacer(),
+//                          Icon(Icons.favorite_border)
+//                        ],
+//                      ),
+//                    ],
+//                  ),
+//                ),
+                          ],
+                        )),
+                  ],
+                ),
               ),
-              Divider(),
-              ListTile(
-                title: Text('New Arrivals'.toUpperCase()),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              Divider(),
-              ListTile(
-                title: Text('Orders'.toUpperCase()),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              Divider(),
-              ListTile(
-                title: Text('Track Your Order'.toUpperCase()),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              Divider(),
-              ListTile(
-                title: Text('About Us'.toUpperCase()),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              Divider(),
-              ListTile(
-                title: Text('Contact Us'.toUpperCase()),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-              Divider(),
-              ListTile(
-                title: Text('Terms & Conditions'.toUpperCase()),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        ),
+            ]),
       ),
+      bottomNavigationBar: getBottomNavigationBar(context),
+      drawer: getDrawer(context),
     );
+  }
+
+  _navigateToProductPage(int productPosition) {
+    SamiaApp.product = SamiaApp.products[productPosition];
+    Navigator.pushNamed(context, '/product');
   }
 }

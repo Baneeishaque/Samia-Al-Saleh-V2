@@ -5,6 +5,7 @@ import 'package:samia_al_saleh/category_model.dart';
 import 'package:samia_al_saleh/launcher.dart';
 import 'package:samia_al_saleh/login.dart';
 import 'package:samia_al_saleh/product.dart';
+import 'package:samia_al_saleh/product_model.dart';
 import 'package:samia_al_saleh/products.dart';
 
 void main() {
@@ -13,7 +14,9 @@ void main() {
 
 class SamiaApp extends StatelessWidget {
   static List<Category> categories;
-  static String username;
+  static List<Product> products;
+  static String username, categoryName;
+  static Product product;
 
   @override
   Widget build(BuildContext context) {
