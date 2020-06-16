@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'package:samia_al_saleh/bottom_navigation_bar_helpers.dart';
 import 'package:samia_al_saleh/drawer_helpers.dart';
@@ -91,106 +92,138 @@ class _CategoriesPageState extends State<CategoriesPage> {
             ),
             new Expanded(
                 child: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(20),
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              crossAxisCount: 2,
-              children: <Widget>[
-                new GestureDetector(
-                  onTap: () =>
-                      {_navigateToProducts(0, SamiaApp.categories[0].name)},
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
+                    primary: false,
+                    padding: const EdgeInsets.all(20),
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2,
+                    children:
+                        List.generate(SamiaApp.categories.length, (index) {
+                      return new GestureDetector(
+                        onTap: () => {
+                          _navigateToProducts(SamiaApp.categories[index].id,
+                              SamiaApp.categories[index].name)
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
 //                      new Image.asset(
 //                        "assets/images/sharp_local_bar_black_48dp.png",
 //                      ),
-                        new Image.memory(
-                          base64Decode(SamiaApp.categories[0].image_512),
-                          fit: BoxFit.scaleDown,
+                              new Image.memory(
+                                base64Decode(
+                                    SamiaApp.categories[index].image_512),
+                                fit: BoxFit.scaleDown,
+                              ),
+                              Text(
+                                SamiaApp.categories[index].name,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          color: Colors.orange[200],
                         ),
-                        Text(
-                          SamiaApp.categories[0].name,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    color: Colors.orange[200],
-                  ),
-                ),
-                new GestureDetector(
-                  onTap: () =>
-                      {_navigateToProducts(1, SamiaApp.categories[1].name)},
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new Image.memory(
-                          base64Decode(SamiaApp.categories[1].image_512),
-                          width: 100,
-                          height: 100,
-                        ),
-                        Text(
-                          SamiaApp.categories[1].name,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    color: Colors.orange[200],
-                  ),
-                ),
-                new GestureDetector(
-                  onTap: () =>
-                      {_navigateToProducts(2, SamiaApp.categories[2].name)},
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new Image.memory(
-                          base64Decode(SamiaApp.categories[2].image_512),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        Text(
-                          SamiaApp.categories[2].name,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    color: Colors.orange[200],
-                  ),
-                ),
-                new GestureDetector(
-                  onTap: () =>
-                      {_navigateToProducts(3, SamiaApp.categories[3].name)},
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new Image.memory(
-                          base64Decode(SamiaApp.categories[3].image_512),
-                          fit: BoxFit.scaleDown,
-                        ),
-                        Text(
-                          SamiaApp.categories[3].name,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                    color: Colors.orange[200],
-                  ),
-                ),
-              ],
-            )),
+                      );
+                    })
+
+//              <Widget>[
+//                new GestureDetector(
+//                  onTap: () =>
+//                      {_navigateToProducts(0, SamiaApp.categories[0].name)},
+//                  child: Container(
+//                    padding: const EdgeInsets.all(8),
+//                    child: Column(
+//                      mainAxisAlignment: MainAxisAlignment.center,
+//                      children: <Widget>[
+////                      new Image.asset(
+////                        "assets/images/sharp_local_bar_black_48dp.png",
+////                      ),
+//                        new Image.memory(
+//                          base64Decode(SamiaApp.categories[0].image_512),
+//                          fit: BoxFit.scaleDown,
+//                        ),
+//                        Text(
+//                          SamiaApp.categories[0].name,
+//                          textAlign: TextAlign.center,
+//                          style: TextStyle(fontSize: 16),
+//                        ),
+//                      ],
+//                    ),
+//                    color: Colors.orange[200],
+//                  ),
+//                ),
+//                new GestureDetector(
+//                  onTap: () =>
+//                      {_navigateToProducts(1, SamiaApp.categories[1].name)},
+//                  child: Container(
+//                    padding: const EdgeInsets.all(8),
+//                    child: Column(
+//                      mainAxisAlignment: MainAxisAlignment.center,
+//                      children: <Widget>[
+//                        new Image.memory(
+//                          base64Decode(SamiaApp.categories[1].image_512),
+//                          width: 100,
+//                          height: 100,
+//                        ),
+//                        Text(
+//                          SamiaApp.categories[1].name,
+//                          textAlign: TextAlign.center,
+//                          style: TextStyle(fontSize: 16),
+//                        ),
+//                      ],
+//                    ),
+//                    color: Colors.orange[200],
+//                  ),
+//                ),
+//                new GestureDetector(
+//                  onTap: () =>
+//                      {_navigateToProducts(2, SamiaApp.categories[2].name)},
+//                  child: Container(
+//                    padding: const EdgeInsets.all(8),
+//                    child: Column(
+//                      mainAxisAlignment: MainAxisAlignment.center,
+//                      children: <Widget>[
+//                        new Image.memory(
+//                          base64Decode(SamiaApp.categories[2].image_512),
+//                          fit: BoxFit.scaleDown,
+//                        ),
+//                        Text(
+//                          SamiaApp.categories[2].name,
+//                          textAlign: TextAlign.center,
+//                          style: TextStyle(fontSize: 16),
+//                        ),
+//                      ],
+//                    ),
+//                    color: Colors.orange[200],
+//                  ),
+//                ),
+//                new GestureDetector(
+//                  onTap: () =>
+//                      {_navigateToProducts(3, SamiaApp.categories[3].name)},
+//                  child: Container(
+//                    padding: const EdgeInsets.all(8),
+//                    child: Column(
+//                      mainAxisAlignment: MainAxisAlignment.center,
+//                      children: <Widget>[
+//                        new Image.memory(
+//                          base64Decode(SamiaApp.categories[3].image_512),
+//                          fit: BoxFit.scaleDown,
+//                        ),
+//                        Text(
+//                          SamiaApp.categories[3].name,
+//                          textAlign: TextAlign.center,
+//                          style: TextStyle(fontSize: 16),
+//                        ),
+//                      ],
+//                    ),
+//                    color: Colors.orange[200],
+//                  ),
+//                ),
+//              ],
+                    )),
           ],
         ),
       ),
@@ -224,7 +257,12 @@ class _CategoriesPageState extends State<CategoriesPage> {
           .toList();
       SamiaApp.products
           .forEach((element) => print('Category Item : ' + element.toString()));
-      Navigator.pushNamed(context, '/products');
+
+      if (SamiaApp.products.length != 0) {
+        Navigator.pushNamed(context, '/products');
+      } else {
+        showShortToast("No Products Available...");
+      }
     } on Exception catch (exception) {
       print(exception);
     } catch (error) {
@@ -235,5 +273,12 @@ class _CategoriesPageState extends State<CategoriesPage> {
   _navigateToProducts(int categoryId, String categoryName) async {
     SamiaApp.categoryName = categoryName;
     _makePostRequestForProducts(categoryId);
+  }
+
+  void showShortToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+    );
   }
 }

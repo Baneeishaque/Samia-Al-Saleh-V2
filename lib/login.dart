@@ -197,7 +197,12 @@ class _LoginPageState extends State<LoginPage> {
           categoriesJson.map((tagJson) => Category.fromJson(tagJson)).toList();
       SamiaApp.categories
           .forEach((element) => print('Category Item : ' + element.toString()));
-      Navigator.pushNamed(context, '/categories');
+
+      if (SamiaApp.categories.length != 0) {
+        Navigator.pushNamed(context, '/categories');
+      } else {
+        showShortToast("No Product Categories Available...");
+      }
     } on Exception catch (exception) {
       print(exception);
     } catch (error) {

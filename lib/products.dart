@@ -82,14 +82,14 @@ class _ProductsPageState extends State<ProductsPage> {
                   mainAxisSpacing: 10,
                   childAspectRatio: MediaQuery.of(context).size.height / 1000,
                   crossAxisCount: 2,
-                  children: <Widget>[
-                    Container(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
+                  children: List.generate(SamiaApp.products.length, (index) {
+                    return Container(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             new GestureDetector(
-                              onTap: () => {_navigateToProductPage(0)},
+                              onTap: () => {_navigateToProductPage(index)},
                               child: Container(
                                 padding: const EdgeInsets.all(8),
                                 child: Column(
@@ -99,7 +99,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                       color: Colors.white,
                                       child: new Image.memory(
                                         base64Decode(
-                                            SamiaApp.products[0].image_512),
+                                            SamiaApp.products[index].image_512),
                                         height: 100,
                                         width: 100,
                                       ),
@@ -108,7 +108,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                       height: 16,
                                     ),
                                     Text(
-                                      SamiaApp.products[0].name,
+                                      SamiaApp.products[index].name,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(fontSize: 14),
                                     ),
@@ -121,7 +121,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: <Widget>[
                                         Text(
-                                          SamiaApp.products[0].listPrice
+                                          SamiaApp.products[index].listPrice
                                               .toString(),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(fontSize: 16),
@@ -134,128 +134,10 @@ class _ProductsPageState extends State<ProductsPage> {
                                 ),
                                 color: Colors.orange[200],
                               ),
-                            ),
-
-//                Container(
-//                  padding: const EdgeInsets.all(8),
-//                  child: Column(
-//                    mainAxisAlignment: MainAxisAlignment.center,
-//                    children: <Widget>[
-//                      Container(
-//                        color: Colors.white,
-//                        child: new Image.asset(
-//                          "assets/images/sharp_local_bar_black_48dp.png",
-//                        ),
-//                      ),
-//                      SizedBox(
-//                        height: 16,
-//                      ),
-//                      Text(
-//                        SamiaApp.products[1].name,
-//                        textAlign: TextAlign.center,
-//                        style: TextStyle(fontSize: 16),
-//                      ),
-//                      Text(
-//                        'Product Sub Category',
-//                        textAlign: TextAlign.center,
-//                        style: TextStyle(fontSize: 16),
-//                      ),
-//                      Row(
-//                        mainAxisSize: MainAxisSize.min,
-//                        children: <Widget>[
-//                          Text(
-//                            SamiaApp.products[1].listPrice.toString(),
-//                            textAlign: TextAlign.center,
-//                            style: TextStyle(fontSize: 16),
-//                          ),
-//                          Spacer(),
-//                          Icon(Icons.favorite_border)
-//                        ],
-//                      ),
-//                    ],
-//                  ),
-//                ),
-//                Container(
-//                  padding: const EdgeInsets.all(8),
-//                  child: Column(
-//                    mainAxisAlignment: MainAxisAlignment.center,
-//                    children: <Widget>[
-//                      Container(
-//                        color: Colors.white,
-//                        child: new Image.asset(
-//                          "assets/images/sharp_local_bar_black_48dp.png",
-//                        ),
-//                      ),
-//                      SizedBox(
-//                        height: 16,
-//                      ),
-//                      Text(
-//                        SamiaApp.products[2].name,
-//                        textAlign: TextAlign.center,
-//                        style: TextStyle(fontSize: 16),
-//                      ),
-//                      Text(
-//                        'Product Sub Category',
-//                        textAlign: TextAlign.center,
-//                        style: TextStyle(fontSize: 16),
-//                      ),
-//                      Row(
-//                        mainAxisSize: MainAxisSize.min,
-//                        children: <Widget>[
-//                          Text(
-//                            SamiaApp.products[2].listPrice.toString(),
-//                            textAlign: TextAlign.center,
-//                            style: TextStyle(fontSize: 16),
-//                          ),
-//                          Spacer(),
-//                          Icon(Icons.favorite_border)
-//                        ],
-//                      ),
-//                    ],
-//                  ),
-//                ),
-//                Container(
-//                  padding: const EdgeInsets.all(8),
-//                  child: Column(
-//                    mainAxisAlignment: MainAxisAlignment.center,
-//                    children: <Widget>[
-//                      Container(
-//                        color: Colors.white,
-//                        child: new Image.asset(
-//                          "assets/images/sharp_local_bar_black_48dp.png",
-//                        ),
-//                      ),
-//                      SizedBox(
-//                        height: 16,
-//                      ),
-//                      Text(
-//                        SamiaApp.products[3].name,
-//                        textAlign: TextAlign.center,
-//                        style: TextStyle(fontSize: 16),
-//                      ),
-//                      Text(
-//                        'Product Sub Category',
-//                        textAlign: TextAlign.center,
-//                        style: TextStyle(fontSize: 16),
-//                      ),
-//                      Row(
-//                        mainAxisSize: MainAxisSize.min,
-//                        children: <Widget>[
-//                          Text(
-//                            SamiaApp.products[3].listPrice.toString(),
-//                            textAlign: TextAlign.center,
-//                            style: TextStyle(fontSize: 16),
-//                          ),
-//                          Spacer(),
-//                          Icon(Icons.favorite_border)
-//                        ],
-//                      ),
-//                    ],
-//                  ),
-//                ),
-                          ],
-                        )),
-                  ],
+                            )
+                          ]),
+                    );
+                  }),
                 ),
               ),
             ]),
