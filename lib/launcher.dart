@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_color_models/flutter_color_models.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'package:samia_al_saleh/json_rpc_helpers.dart';
 import 'package:samia_al_saleh/server_end_point.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_color_models/flutter_color_models.dart';
 
 class LauncherPage extends StatefulWidget {
   LauncherPage({Key key, this.title}) : super(key: key);
@@ -40,29 +40,30 @@ class _LauncherPageState extends State<LauncherPage> {
             SizedBox(
               height: 53,
             ),
-            Stack(children: <Widget>[
-              Image.asset('assets/images/launcher_brush.png'),
-              Center(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Hello',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 88.04,
-                        fontFamily: 'Sensations And Qualities'),
-                  ),
-                  Text(
-                    'Beautiful!',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 88.04,
-                        fontFamily: 'Sensations And Qualities'),
-                  ),
-                ],
-              )),
-            ]),
+//            Stack(children: <Widget>[
+//              Image.asset('assets/images/launcher_brush.png'),
+//              Center(
+//                  child: Column(
+//                mainAxisAlignment: MainAxisAlignment.center,
+//                children: <Widget>[
+//                  Text(
+//                    'Hello',
+//                    textAlign: TextAlign.center,
+//                    style: TextStyle(
+//                        fontSize: 88.04,
+//                        fontFamily: 'Sensations And Qualities'),
+//                  ),
+//                  Text(
+//                    'Beautiful!',
+//                    textAlign: TextAlign.center,
+//                    style: TextStyle(
+//                        fontSize: 88.04,
+//                        fontFamily: 'Sensations And Qualities'),
+//                  ),
+//                ],
+//              )),
+//            ]),
+            Image.asset('assets/images/hello.png'),
             SizedBox(
               height: 53,
             ),
@@ -70,7 +71,7 @@ class _LauncherPageState extends State<LauncherPage> {
               margin: const EdgeInsets.only(left: 48, right: 48),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: double.infinity),
-                child: RaisedButton(
+                child: FlatButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
                       side: BorderSide(
@@ -79,18 +80,19 @@ class _LauncherPageState extends State<LauncherPage> {
                   color: CmykColor(4.58, 23.58, 18.54, 0.0).toColor(),
                   textColor: Colors.white,
                   child: Text("Log In",
-                      style: TextStyle(fontSize: 14, fontFamily: 'Arial')),
+                      style: TextStyle(fontSize: 15.56, fontFamily: 'Arial')),
                 ),
               ),
             ),
             SizedBox(
               height: 36,
             ),
-            Text(
-              'by Samia Alsaleh',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
-            ),
+//            Text(
+//              'by Samia Alsaleh',
+//              textAlign: TextAlign.center,
+//              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
+//            ),
+            Image.asset('assets/images/samia_italic.png')
           ],
         ),
       ),

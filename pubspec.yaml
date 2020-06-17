@@ -27,6 +27,7 @@ dependencies:
   fluttertoast: ^4.0.1
   shared_preferences: ^0.5.7+3
   flutter_color_models: ^0.1.6
+  google_fonts: ^1.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -51,3 +52,6 @@ flutter:
     - family: Sensations And Qualities
       fonts:
         - asset: assets/fonts/sensations_and_qualities.ttf
+    - family: Arial
+      fonts:
+        - asset: assets/fonts/arial.ttf
