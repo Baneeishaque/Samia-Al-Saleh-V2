@@ -6,6 +6,7 @@ import 'package:http/http.dart';
 import 'package:samia_al_saleh/json_rpc_helpers.dart';
 import 'package:samia_al_saleh/server_end_point.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_color_models/flutter_color_models.dart';
 
 class LauncherPage extends StatefulWidget {
   LauncherPage({Key key, this.title}) : super(key: key);
@@ -22,35 +23,48 @@ class _LauncherPageState extends State<LauncherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[100],
+      backgroundColor: CmykColor(0.62, 10.98, 14.1, 0.0).toColor(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('assets/images/sharp_api_black_48dp.png'),
+            Image.asset('assets/images/logo_with_name.png'),
+//            SizedBox(
+//              height: 4,
+//            ),
+//            Text(
+//              'Samia Alsaleh',
+//              textAlign: TextAlign.center,
+//              style: TextStyle(fontSize: 16),
+//            ),
             SizedBox(
-              height: 4,
+              height: 53,
             ),
-            Text(
-              'Samia Alsaleh',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16),
-            ),
+            Stack(children: <Widget>[
+              Image.asset('assets/images/launcher_brush.png'),
+              Center(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Hello',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 88.04,
+                        fontFamily: 'Sensations And Qualities'),
+                  ),
+                  Text(
+                    'Beautiful!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 88.04,
+                        fontFamily: 'Sensations And Qualities'),
+                  ),
+                ],
+              )),
+            ]),
             SizedBox(
-              height: 80,
-            ),
-            Text(
-              'Hello',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 40),
-            ),
-            Text(
-              'Beautiful!',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 40),
-            ),
-            SizedBox(
-              height: 80,
+              height: 53,
             ),
             Container(
               margin: const EdgeInsets.only(left: 48, right: 48),
@@ -59,11 +73,13 @@ class _LauncherPageState extends State<LauncherPage> {
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.redAccent)),
+                      side: BorderSide(
+                          color: CmykColor(4.58, 23.58, 18.54, 0.0).toColor())),
                   onPressed: () => {_makePostRequest()},
-                  color: Colors.redAccent,
+                  color: CmykColor(4.58, 23.58, 18.54, 0.0).toColor(),
                   textColor: Colors.white,
-                  child: Text("Log In", style: TextStyle(fontSize: 14)),
+                  child: Text("Log In",
+                      style: TextStyle(fontSize: 14, fontFamily: 'Arial')),
                 ),
               ),
             ),
