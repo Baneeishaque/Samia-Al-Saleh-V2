@@ -7,8 +7,8 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="SA By Samia"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/logo"
+        android:label="SA BY SAMIA">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

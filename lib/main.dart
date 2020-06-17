@@ -29,9 +29,7 @@ class SamiaApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => LauncherPage(title: 'Samia Alsaleh Launcher'),
-        // When navigating to the "/second" route, build the SecondScreen widget.
         '/login': (context) => LoginPage(title: 'Samia Alsaleh Product Login'),
         '/categories': (context) =>
             CategoriesPage(title: 'Samia Alsaleh Product Categories'),
