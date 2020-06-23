@@ -1,0 +1,30 @@
+POST
+
+http://135.181.28.29:8062/web/session/authenticate
+
+@{"Content-type": "application/json"}
+
+{"json": 2, "params": { "db": "samia", "login": "admin", "password": "admin" }}
+
+%%%
+# Duration: 833 ms
+# POST
+# http://135.181.28.29:8062/web/session/authenticate
+# Headers
+# @{"Content-type": "application/json"}
+# Body
+# {"json": 2, "params": { "db": "samia", "login": "admin", "password": "admin" }}
+
+
+# status 400
+
+@Content-Type: text/html
+@Content-Length: 152
+@Server: Werkzeug/0.14.1 Python/3.8.2
+@Date: Tue, 23 Jun 2020 15:28:20 GMT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>400 Bad Request</title>
+<h1>Bad Request</h1>
+<p>Session expired (invalid CSRF token)</p>
+

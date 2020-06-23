@@ -55,3 +55,6 @@ flutter:
     - family: Arial
       fonts:
         - asset: assets/fonts/arial.ttf
+    - family: Myriad Pro
+      fonts:
+        - asset: assets/fonts/MyriadPro-Regular.otf

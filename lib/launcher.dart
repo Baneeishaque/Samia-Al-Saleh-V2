@@ -5,7 +5,7 @@ import 'package:flutter_color_models/flutter_color_models.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'package:samia_al_saleh/json_rpc_helpers.dart';
-import 'package:samia_al_saleh/server_end_point.dart';
+import 'package:samia_al_saleh/samia_post_request_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LauncherPage extends StatefulWidget {
@@ -23,75 +23,63 @@ class _LauncherPageState extends State<LauncherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CmykColor(0.62, 10.98, 14.1, 0.0).toColor(),
+      backgroundColor: RgbColor(252, 228, 212).toColor(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset('assets/images/logo_with_name.png'),
-//            SizedBox(
-//              height: 4,
-//            ),
-//            Text(
-//              'Samia Alsaleh',
-//              textAlign: TextAlign.center,
-//              style: TextStyle(fontSize: 16),
-//            ),
             SizedBox(
-              height: 53,
+              height: 45.4,
             ),
-//            Stack(children: <Widget>[
-//              Image.asset('assets/images/launcher_brush.png'),
-//              Center(
-//                  child: Column(
-//                mainAxisAlignment: MainAxisAlignment.center,
-//                children: <Widget>[
-//                  Text(
-//                    'Hello',
-//                    textAlign: TextAlign.center,
-//                    style: TextStyle(
-//                        fontSize: 88.04,
-//                        fontFamily: 'Sensations And Qualities'),
-//                  ),
-//                  Text(
-//                    'Beautiful!',
-//                    textAlign: TextAlign.center,
-//                    style: TextStyle(
-//                        fontSize: 88.04,
-//                        fontFamily: 'Sensations And Qualities'),
-//                  ),
-//                ],
-//              )),
-//            ]),
-            Image.asset('assets/images/hello.png'),
+            Stack(alignment: Alignment.center, children: <Widget>[
+              new Padding(
+                padding: EdgeInsets.only(left: 32),
+                child: Image.asset('assets/images/launcher_brush.png'),
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    'Hello',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 88.04,
+                        fontFamily: 'Sensations And Qualities'),
+                  ),
+                  Text(
+                    'Beautiful!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 88.04,
+                        fontFamily: 'Sensations And Qualities'),
+                  ),
+                ],
+              ),
+            ]),
             SizedBox(
-              height: 53,
+              height: 46,
             ),
             Container(
-              margin: const EdgeInsets.only(left: 48, right: 48),
+              margin: const EdgeInsets.only(left: 82, right: 82),
               child: ConstrainedBox(
                 constraints: const BoxConstraints(minWidth: double.infinity),
                 child: FlatButton(
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(
-                          color: CmykColor(4.58, 23.58, 18.54, 0.0).toColor())),
-                  onPressed: () => {_makePostRequest()},
-                  color: CmykColor(4.58, 23.58, 18.54, 0.0).toColor(),
+                      borderRadius: BorderRadius.circular(18.98),
+                      side:
+                          BorderSide(color: RgbColor(238, 199, 191).toColor())),
+                  onPressed: () => {_makePostRequestForSession()},
+                  color: RgbColor(238, 199, 191).toColor(),
                   textColor: Colors.white,
                   child: Text("Log In",
-                      style: TextStyle(fontSize: 15.56, fontFamily: 'Arial')),
+                      style:
+                          TextStyle(fontSize: 15.56, fontFamily: 'Myriad Pro')),
                 ),
               ),
             ),
             SizedBox(
-              height: 36,
+              height: 40,
             ),
-//            Text(
-//              'by Samia Alsaleh',
-//              textAlign: TextAlign.center,
-//              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16),
-//            ),
             Image.asset('assets/images/samia_italic.png')
           ],
         ),
@@ -99,15 +87,13 @@ class _LauncherPageState extends State<LauncherPage> {
     );
   }
 
-  _makePostRequest() async {
+  _makePostRequestForSession() async {
     try {
-      String url = serverAddress + '/web/session/authenticate';
-      Map<String, String> headers = {"Content-type": "application/json"};
-      String json = generateJsonRpcRequestRowData(
-          '{ "db": "samia", "login": "admin", "password": "admin" }');
-      Response response = await post(url, headers: headers, body: json);
-      int statusCode = response.statusCode;
-      print('Status Code : ' + statusCode.toString());
+      Response response = await getJsonRpcPostRequestResponseForSamia(
+          '/web/session/authenticate',
+          generateJsonRpcRequestRowData(
+              '{ "db": "samia", "login": "admin", "password": "admin" }'));
+      print('Status Code : ' + response.statusCode.toString());
       Map<String, String> responseHeaders = response.headers;
       print('Response Headers : ' + responseHeaders.toString());
       String body = response.body;
