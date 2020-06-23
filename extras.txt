@@ -1,1 +1,1 @@
-outline_material_icons: ^0.1.1
+import 'package:outline_material_icons/outline_material_icons.dart';
