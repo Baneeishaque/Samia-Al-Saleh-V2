@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:outline_material_icons/outline_material_icons.dart';
 
 Container getBottomNavigationBar(BuildContext context) {
   return Container(
@@ -7,24 +8,34 @@ Container getBottomNavigationBar(BuildContext context) {
       showUnselectedLabels: false,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
+//          icon: Icon(OMIcons.home),
           icon: Icon(Icons.home),
+//          activeIcon: Icon(Icons.home),
           title: Text('Home'),
         ),
         BottomNavigationBarItem(
+//          icon: Icon(OMIcons.search),
           icon: Icon(Icons.search),
-          title: Text('Home'),
+//          activeIcon: Icon(Icons.search),
+          title: Text('Search'),
         ),
         BottomNavigationBarItem(
+//          icon: Icon(OMIcons.shoppingCart),
           icon: Icon(Icons.shopping_cart),
-          title: Text('Home'),
+//          activeIcon: Icon(Icons.shopping_cart),
+          title: Text('Cart'),
         ),
         BottomNavigationBarItem(
+//          icon: Icon(OMIcons.favorite),
           icon: Icon(Icons.favorite),
-          title: Text('Home'),
+//          activeIcon: Icon(Icons.favorite),
+          title: Text('Favourite'),
         ),
         BottomNavigationBarItem(
+//          icon: Icon(OMIcons.person),
           icon: Icon(Icons.person),
-          title: Text('Home'),
+//          activeIcon: Icon(Icons.person),
+          title: Text('Person'),
         ),
       ],
       currentIndex: 0,

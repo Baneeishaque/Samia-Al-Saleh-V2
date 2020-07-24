@@ -4,9 +4,7 @@ import 'package:samia_al_saleh/main.dart';
 Theme getDrawer(BuildContext context) {
   return Theme(
     data: Theme.of(context).copyWith(
-      canvasColor:
-          Colors.brown[100], //This will change the drawer background to blue.
-      //other styles
+      canvasColor: Colors.brown[100],
     ),
     child: Drawer(
       // Add a ListView to the drawer. This ensures the user can scroll
@@ -24,7 +22,9 @@ Theme getDrawer(BuildContext context) {
                   SizedBox(
                     height: 8,
                   ),
-                  Text(SamiaApp.username),
+                  Text(SamiaApp.username == null
+                      ? "Login/SignUp"
+                      : SamiaApp.username),
                 ]),
             decoration: BoxDecoration(
               color: Colors.deepOrange[300],
@@ -34,19 +34,27 @@ Theme getDrawer(BuildContext context) {
             title: Text("Products".toUpperCase()),
             children: <Widget>[
               ListTile(
-                title: Text(SamiaApp.categories[0].name.toUpperCase()),
+                title: Text(SamiaApp.categories == null
+                    ? "C1"
+                    : SamiaApp.categories[0].name.toUpperCase()),
                 onTap: () {},
               ),
               ListTile(
-                title: Text(SamiaApp.categories[1].name.toUpperCase()),
+                title: Text(SamiaApp.categories == null
+                    ? "C2"
+                    : SamiaApp.categories[1].name.toUpperCase()),
                 onTap: () {},
               ),
               ListTile(
-                title: Text(SamiaApp.categories[2].name.toUpperCase()),
+                title: Text(SamiaApp.categories == null
+                    ? "C3"
+                    : SamiaApp.categories[2].name.toUpperCase()),
                 onTap: () {},
               ),
               ListTile(
-                title: Text(SamiaApp.categories[3].name.toUpperCase()),
+                title: Text(SamiaApp.categories == null
+                    ? "C4"
+                    : SamiaApp.categories[3].name.toUpperCase()),
                 onTap: () {},
               ),
             ],

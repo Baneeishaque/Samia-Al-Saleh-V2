@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:samia_al_saleh/category_model.dart';
+import 'package:samia_al_saleh/home.dart';
 import 'package:samia_al_saleh/login.dart';
 import 'package:samia_al_saleh/product_model.dart';
 
@@ -22,10 +23,11 @@ class SamiaApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/home',
       routes: {
 //        '/': (context) => LauncherPage(title: 'Samia Alsaleh Launcher'),
-        '/login': (context) => LoginPage(title: 'Samia Alsaleh Product Login'),
+        '/home': (context) => HomePage(title: 'Samia Alsaleh Home'),
+//        '/login': (context) => LoginPage(title: 'Samia Alsaleh Product Login'),
 //        '/categories': (context) =>
 //            CategoriesPage(title: 'Samia Alsaleh Product Categories'),
 //        '/products': (context) => ProductsPage(title: 'Samia Alsaleh Products'),
